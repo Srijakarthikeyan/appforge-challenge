@@ -3,35 +3,78 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AppForge Challenge</title>
+  <title>Smart Campus Issue Reporter</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <header>
-    <h1>AppForge Challenge</h1>
-    <p>Build. Solve. Innovate.</p>
+    <h1>Smart Campus Issue Reporter</h1>
+    <p>See it. Report it. Get it fixed.</p>
   </header>
 
   <main class="container">
-    <section class="card">
-      <h2>Welcome to Our App</h2>
-      <p>
-        This application is designed to solve a real-world problem
-        through a simple and user-friendly interface.
+
+    <section class="card" id="reportSection">
+      <h2>Report an Issue</h2>
+      <p class="ways">Report using a form, add a photo, or stay anonymous.</p>
+
+      <select id="issueType">
+        <option value="">Select issue type</option>
+        <option>Broken fan/light</option>
+        <option>Water leak</option>
+        <option>Wi-Fi dead zone</option>
+        <option>Broken furniture</option>
+        <option>Cleanliness</option>
+        <option>Other</option>
+      </select>
+
+      <select id="urgency">
+        <option value="Low">Urgency: Low</option>
+        <option value="Medium" selected>Urgency: Medium</option>
+        <option value="High">Urgency: High</option>
+      </select>
+
+      <select id="location">
+        <option value="">Select location</option>
+        <option>Library</option>
+        <option>Block A</option>
+        <option>Block B</option>
+        <option>Canteen</option>
+        <option>Hostel</option>
+        <option>Playground</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input type="text" id="otherLocation" class="hidden" placeholder="Type the location">
+
+      <textarea id="description" rows="3" placeholder="What happened? What should be done?"></textarea>
+
+      <label class="file-label">Add a photo (optional)</label>
+      <input type="file" id="photoInput" accept="image/*">
+      <img id="photoPreview" alt="Photo preview">
+
+      <label class="anon-label">
+        <input type="checkbox" id="anonymous"> Report anonymously
+      </label>
+      <p class="anon-note" id="anonNote">
+        No name, email, or ID is collected or saved with your report.
       </p>
-      <button id="startBtn">Get Started</button>
+
+      <button id="submitBtn">Submit Issue</button>
+      <div id="result"></div>
     </section>
 
-    <section class="card" id="contentSection">
-      <h2>Our Features</h2>
-      <ul>
-        <li>Simple and clean user interface</li>
-        <li>Easy navigation</li>
-        <li>Fast and interactive experience</li>
-        <li>Practical problem-solving approach</li>
-      </ul>
+    <section class="card" id="issuesSection">
+      <h2>Reported Issues</h2>
+      <select id="filterStatus">
+        <option value="all">All</option>
+        <option value="Pending">Pending</option>
+        <option value="Resolved">Resolved</option>
+      </select>
+      <div id="issueList"></div>
     </section>
+
   </main>
 
   <footer>
